@@ -1,7 +1,6 @@
 // https://www.attackontitanapi.com/docs
 
 async function fetchCharacters() {
-
   const response = await fetch(`https://api.attackontitanapi.com/characters`, {mode: 'cors'});
   const characterData = await response.json();
   //console.log(characterData);
