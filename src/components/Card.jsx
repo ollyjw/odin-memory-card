@@ -1,13 +1,12 @@
 export default function Card({ cardContent }) {
-    const {img, id, name} = cardContent;
     return (
-        <div className="card" id={id}>
+        <div className="card" id={cardContent.id}>
             <img 
-                key={id} 
-                src={img} 
-                alt={name} 
+                key={cardContent.id} 
+                src={cardContent.img} 
+                alt={cardContent.name} 
             />
-            <p>{name}</p>
+            <p>{cardContent.name}</p>
         </div>
     )
 }
