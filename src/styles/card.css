@@ -3,5 +3,31 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.card {
+    padding: 30px;
+    background: linear-gradient(170deg, rgba(255,236,207, 0.623) 0%, #d2c4ae 100%);
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+    transition: all .3s;
+}
+
+.card:hover {
+    transform: scale(0.95);
+}
+
+.card-img {
+    border-radius: 5px;
+}
+
+.card-text {
+    padding-top: 15px;
+    font-family: 'Ditty';
+    font-size: 30px;
+    color: #403535;
 }

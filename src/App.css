@@ -4,3 +4,12 @@
   padding: 2rem;
   text-align: center;
 }
+
+@font-face {
+  font-family: 'Ditty';
+  src: local('Ditty'), url(./fonts/Ditty.ttf) format('truetype');
+}
+
+p {
+  margin: 0;
+}
