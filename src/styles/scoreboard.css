@@ -1,0 +1,15 @@
+.score-board {
+    flex-grow: 4;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.scores {
+    font-size: 27px;
+}
+
+.score-title {
+    font-family: 'Ditty';
+    font-size: 30px;
+    letter-spacing: .4rem;
+}

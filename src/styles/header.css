@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.header-left {    
+    height: 90px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.heading {
+    font-family: 'Ditty';
+    font-size: 30px;
+    letter-spacing: .4rem;
+    margin: 0 0 15px 0;
+}
+
+.instructions {
+    font-family: 'Ditty';    
+    font-size: 20px;
+    letter-spacing: .15rem;
+}
