@@ -1,4 +1,4 @@
-export default function Card({ cardContent }) {
+export default function Card({ cardContent, onClick }) {
     
     // Full url returned 404 error so i remove everything after '.png' in the url and it works
     const getPathFromUrl = (url) => {
@@ -9,7 +9,7 @@ export default function Card({ cardContent }) {
     const newUrl = getPathFromUrl(String(imgUrl));
 
     return (
-        <div className="card" id={cardContent.id}>
+        <div className="card" id={cardContent.id} onClick={onClick}>
             <img 
                 key={cardContent.id} 
                 src={newUrl} 

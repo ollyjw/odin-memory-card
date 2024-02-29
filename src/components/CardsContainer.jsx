@@ -1,10 +1,8 @@
 import Card from "./Card"
 import "../styles/card.css"
 
-export default function CardsContainer({ characterData }) {
-    
+export default function CardsContainer({ characterData, onCardClick }) {
     console.log(characterData);
-
     return (
         <div className="cards-container">
             {characterData.map((char) => (
@@ -15,6 +13,7 @@ export default function CardsContainer({ characterData }) {
                     <Card 
                         key={char.id}
                         cardContent={char}
+                        onClick={onCardClick}
                     />
                 </div>
             ))}
