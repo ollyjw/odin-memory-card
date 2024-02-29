@@ -15,13 +15,13 @@
 
 .heading {
     font-family: 'Ditty';
-    font-size: 30px;
-    letter-spacing: .4rem;
+    font-size: 35px;
+    letter-spacing: .2rem;
     margin: 0 0 15px 0;
 }
 
 .instructions {
     font-family: 'Ditty';    
     font-size: 20px;
-    letter-spacing: .15rem;
+    letter-spacing: .1rem;
 }
