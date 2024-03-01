@@ -13,9 +13,6 @@ p {
   margin: 0;
 }
 
-.app {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.app {  
   padding: 2rem;
 }
