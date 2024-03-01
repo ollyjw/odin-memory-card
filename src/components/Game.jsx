@@ -3,12 +3,14 @@ import CardsContainer from "./CardsContainer"
 import Header from "./Header"
 import fetchCharactersById from "../helpers/fetchCharacters"
 import shuffleArr from "../helpers/shuffleArr"
+import GameOverModal from "./GameOverModal"
 
 export default function Game() {
     const [characterData, setCharacterData] = useState([]);  
     const [currentScore, setCurrentScore] = useState(0);
     const [bestScore, setBestScore] = useState(0);
     const [clickedChars, setClickedChars] = useState([]);
+    const [result, setResult] = useState("in-progress");
 
     function handleClick(e) {
         // console.log(e.currentTarget.id);
@@ -23,8 +25,18 @@ export default function Game() {
             // reset score to 0 & clear the clicked characters
             setCurrentScore(0);
             setClickedChars([]);
+            setResult("loss");
         } else { // current click target hasn't been clicked before
-            // add 1 to current score and push  ____ to clickedChars
+            // win condition - if we reach highest score...
+            if (currentScore + 1 === characterData.length) {
+                setCurrentScore(currentScore + 1);
+                setBestScore(currentScore);
+                setClickedChars([]);
+                setResult("win");               
+            } else {
+                setCurrentScore(currentScore + 1);
+            }
+            // add 1 to current score and push char id to clickedChars
             setCurrentScore(currentScore + 1);
             setClickedChars([...clickedChars, e.currentTarget.id]);
         }
@@ -32,6 +44,11 @@ export default function Game() {
         // existing data defined as prevChars gets shuffled
         setCharacterData((prevChars) => shuffleArr([...prevChars]));
     }    
+
+    function handlePlayAgain() {
+        setResult("in-progress");
+        setCurrentScore(0);
+    }
 
     useEffect(() => {
         async function fetchTargetData() {
@@ -51,6 +68,7 @@ export default function Game() {
 
             const aotTargetChars = await fetchCharactersById(newUrl);
             setCharacterData(shuffleArr(aotTargetChars));
+            setResult("in-progress");
         }
         fetchTargetData();
     }, []);
@@ -65,6 +83,18 @@ export default function Game() {
                 characterData={characterData}
                 onCardClick={handleClick}
             />
+            {result === "win" || result === "loss" ? (
+                <GameOverModal
+                    winOrLoss={result}
+                    finalScore={currentScore}
+                    onBtnClick={handlePlayAgain}
+                />
+            ) : ("")}
         </>
     )
 }
+
+
+// TO DO: 
+// - make play again btn give new set of character data
+// - make sure final score shows correct score in game over modal
