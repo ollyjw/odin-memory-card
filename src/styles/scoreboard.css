@@ -1,7 +1,13 @@
 .score-board {
     flex-grow: 4;
     text-align: right;
-    margin-right: 15px;
+    margin-right: 15px;    
+}
+@media only screen and (max-width: 600px) {
+    .score-board {
+        text-align: center;
+        margin-top: 60px;
+    }
 }
 
 .scores {
