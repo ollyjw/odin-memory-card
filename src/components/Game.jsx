@@ -12,18 +12,14 @@ export default function Game() {
     const [clickedChars, setClickedChars] = useState([]);
     const [result, setResult] = useState("in-progress");
 
-    function handleClick(e) {
-        // console.log(e.currentTarget.id);
-        // console.log(clickedChars);
-        
-        // if current click target has the same id as character who has been clicked already
+    function handleClick(e) {       
+        // lose condition - if current click target has the same id as character who has been clicked already
         if (clickedChars.includes(e.currentTarget.id)) {
             // check if score is greater than highscore
             if (currentScore > bestScore) {
                 setBestScore(currentScore);
             }
-            // reset score to 0 & clear the clicked characters
-            setCurrentScore(0);
+            // clear the clicked characters & set result state to loss
             setClickedChars([]);
             setResult("loss");
         } else { // current click target hasn't been clicked before
@@ -43,33 +39,34 @@ export default function Game() {
         // on click the cards shuffle in any condition
         // existing data defined as prevChars gets shuffled
         setCharacterData((prevChars) => shuffleArr([...prevChars]));
-    }    
+    }
+
+    async function fetchTargetData() {
+        const aotCharIdArr = [188, 2, 1, 5, 12, 8, 86, 3, 4, 10, 87, 67, 95, 101, 124, 74, 184, 104, 57, 193, 88, 90, 89, 82, 91, 92, 182, 71, 160]; //29 chars (- i wanted selection of main characters rather than a set including some guy's horse!)
+        const newArr = [];
+
+        // Take 12 random items from id array, push them to new array and remove each item from original array with splice to avoid repetitions
+        for (let i = 0; i < 12; i++) {
+            const randomIndexNo = Math.floor(Math.random() * aotCharIdArr.length);
+            newArr.push(aotCharIdArr[randomIndexNo]);
+            aotCharIdArr.splice(randomIndexNo,1); // splice(start, deleteCount)
+        }
+
+        const newUrl = `https://api.attackontitanapi.com/characters/${newArr.toString()}`;
+
+        const aotTargetChars = await fetchCharactersById(newUrl);
+        setCharacterData(shuffleArr(aotTargetChars));
+        setResult("in-progress");
+    }
 
     function handlePlayAgain() {
         setResult("in-progress");
         setCurrentScore(0);
+        setBestScore(currentScore);
+        fetchTargetData();
     }
 
     useEffect(() => {
-        async function fetchTargetData() {
-            const aotCharIdArr = [188, 2, 1, 5, 12, 8, 86, 3, 4, 10, 87, 67, 95, 101, 124, 74, 184, 104, 57, 193, 88, 90, 89, 82, 91, 92, 182, 71, 160]; //29 chars
-            const newArr = [];
-
-            // Take 12 random items from id array, push them to new array and remove each item from original array with splice to avoid repetitions
-            for (let i = 0; i < 12; i++) {
-                const randomIndexNo = Math.floor(Math.random() * aotCharIdArr.length);
-                newArr.push(aotCharIdArr[randomIndexNo]);
-                aotCharIdArr.splice(randomIndexNo,1); // splice(start, deleteCount)
-            }
-
-            //console.log(newArr);
-
-            const newUrl = `https://api.attackontitanapi.com/characters/${newArr.toString()}`;
-
-            const aotTargetChars = await fetchCharactersById(newUrl);
-            setCharacterData(shuffleArr(aotTargetChars));
-            setResult("in-progress");
-        }
         fetchTargetData();
     }, []);
 
@@ -93,8 +90,3 @@ export default function Game() {
         </>
     )
 }
-
-
-// TO DO: 
-// - make play again btn give new set of character data
-// - make sure final score shows correct score in game over modal
