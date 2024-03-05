@@ -16,7 +16,7 @@
     transition: all .3s;
 }
 
-.card:hover {
+.card-front:hover {
     transform: scale(0.95);
     cursor: pointer;
 }
