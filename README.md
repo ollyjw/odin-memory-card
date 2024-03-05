@@ -8,4 +8,4 @@ Your application should include a scoreboard, which counts the current score, an
 
 You also need a handful of cards that display images and possibly informational text. These cards and texts need to be fetched from an external API."
 
-BEST VIEWED ON DESKTOP
+BEST VIEWED ON DESKTOP [HERE](https://attack-on-titan-memory-card-game.netlify.app/)
