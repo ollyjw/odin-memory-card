@@ -30,7 +30,7 @@ export default function Game() {
                 setClickedChars([]);
                 setResult("win");               
             } else {
-                setCurrentScore(currentScore + 1);
+                setCurrentScore(currentScore + 1);                
             }
             // add 1 to current score and push char id to clickedChars
             setCurrentScore(currentScore + 1);
@@ -38,7 +38,15 @@ export default function Game() {
         }
         // on click the cards shuffle in any condition
         // existing data defined as prevChars gets shuffled
-        setCharacterData((prevChars) => shuffleArr([...prevChars]));
+        const cardsContainer = document.querySelector(".cards-container");
+        cardsContainer.classList.toggle("flipped");
+        setTimeout(() => {
+            cardsContainer.classList.toggle("flipped")
+        }, "1000");
+        // Shuffle must happen in shorter time period otherwise confusing css transitions occur
+        setTimeout(() => {
+            setCharacterData((prevChars) => shuffleArr([...prevChars]));
+        }, "500");        
     }
 
     async function fetchTargetData() {
