@@ -26,7 +26,7 @@ export default function Game() {
             // win condition - if we reach highest score...
             if (currentScore + 1 === characterData.length) {
                 setCurrentScore(currentScore + 1);
-                setBestScore(currentScore);
+                setBestScore(currentScore + 1);
                 setClickedChars([]);
                 setResult("win");               
             } else {
@@ -69,8 +69,7 @@ export default function Game() {
 
     function handlePlayAgain() {
         setResult("in-progress");
-        setCurrentScore(0);
-        setBestScore(currentScore);
+        setCurrentScore(0);        
         fetchTargetData();
     }
 
