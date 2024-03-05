@@ -1,10 +1,17 @@
+.header-container {
+    margin-bottom: 60px;
+}
+
 .header {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     align-content: center;
-    gap: 60px;
-    margin-bottom: 60px;
+    gap: 60px; 
+    padding: 30px;  
+    border-radius: 5px;
+    background: rgba(255,236,207, 0.75);
+    color: #403535;
 }
 
 .header-left {    

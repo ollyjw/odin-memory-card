@@ -3,7 +3,7 @@ import Scoreboard from "./Scoreboard"
 
 export default function Header({currentScore, bestScore}) {
     return (
-        <>
+        <div className="header-container">
             <div className="header">
                 <div className="header-left">
                     <h2 className="heading">Attack on Titan Memory Game</h2>
@@ -14,6 +14,6 @@ export default function Header({currentScore, bestScore}) {
                     bestScore={bestScore}
                 />
             </div>
-        </>
+        </div>
     )
 }
