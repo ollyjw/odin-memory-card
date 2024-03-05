@@ -3,12 +3,6 @@
     text-align: right;
     margin-right: 15px;    
 }
-@media only screen and (max-width: 600px) {
-    .score-board {
-        text-align: center;
-        margin-top: 60px;
-    }
-}
 
 .scores {
     font-size: 27px;
@@ -18,4 +12,11 @@
     font-family: 'Ditty';
     font-size: 30px;
     letter-spacing: .3rem;
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 600px) {
+    .score-board {
+        text-align: center;
+    }
 }
