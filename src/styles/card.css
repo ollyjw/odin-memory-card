@@ -58,6 +58,7 @@
     transform: rotateY(180deg);
     transition: transform 0.5s;
     backface-visibility: hidden;
+    cursor: wait;
 }
 
 .flipped .card-front {
