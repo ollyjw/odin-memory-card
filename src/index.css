@@ -28,7 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(rgba(41, 64, 35,.75), rgba(41, 64, 35,.75)), url(./assets/background.jpg);
+  background: linear-gradient(rgba(41, 64, 35,.5), rgba(41, 64, 35,.5)), url(./assets/background.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
