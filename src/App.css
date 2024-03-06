@@ -15,4 +15,5 @@ p {
 
 .app {  
   padding: 2rem;
+  position: relative;
 }
